@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="kilau_primary">#2563EB</color>
+    <color name="kilau_primary_light">#3B82F6</color>
+    <color name="kilau_navy">#0B2A6B</color>
+    <color name="kilau_yellow">#FFC94A</color>
+    <color name="kilau_background">#F3F7FF</color>
+    <color name="kilau_white">#FFFFFF</color>
+    <color name="kilau_border">#D9E4F7</color>
+    <color name="kilau_muted">#5B6F8F</color>
+    <color name="kilau_error">#C0392B</color>
+
+</resources>
