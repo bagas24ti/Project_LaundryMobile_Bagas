@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kilau_background"
+    tools:context=".OrderActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/kilau_primary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/title_buat_pesanan"
+            app:titleTextColor="@color/kilau_white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- 1. LAYANAN -->
+            <TextView
+                android:id="@+id/lbl_layanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:letterSpacing="0.05"
+                android:text="@string/label_layanan"
+                android:textColor="@color/kilau_muted"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_layanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_layanan"
+                android:layout_marginTop="6dp"
+                app:cardBackgroundColor="@color/kilau_white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/kilau_border"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/img_service_check"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Check"
+                        android:src="@drawable/ic_check_circle" />
+
+                    <TextView
+                        android:id="@+id/tv_service_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@id/img_service_check"
+                        android:text="@string/default_service_name"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_service_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_service_name"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="4dp"
+                        android:layout_toStartOf="@id/img_service_check"
+                        android:text="@string/default_service_detail"
+                        android:textColor="@color/kilau_muted"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. ESTIMASI BERAT -->
+            <TextView
+                android:id="@+id/lbl_estimasi_berat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_layanan"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="18dp"
+                android:letterSpacing="0.05"
+                android:text="@string/label_estimasi_berat"
+                android:textColor="@color/kilau_muted"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_berat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_estimasi_berat"
+                android:layout_marginTop="6dp"
+                app:cardBackgroundColor="@color/kilau_white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/kilau_border"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <!-- Stepper Buttons (Kanan) -->
+                    <ImageButton
+                        android:id="@+id/btn_plus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_button_plus"
+                        android:contentDescription="Plus"
+                        android:src="@drawable/ic_add" />
+
+                    <TextView
+                        android:id="@+id/tv_weight_value"
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/btn_plus"
+                        android:gravity="center"
+                        android:text="@string/default_weight_value"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/btn_minus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/tv_weight_value"
+                        android:background="@drawable/bg_button_minus"
+                        android:contentDescription="Minus"
+                        android:src="@drawable/ic_remove" />
+
+                    <!-- Text Left Side -->
+                    <TextView
+                        android:id="@+id/tv_weight_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@id/btn_minus"
+                        android:text="@string/weight_title"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_weight_subtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_weight_title"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="4dp"
+                        android:layout_toStartOf="@id/btn_minus"
+                        android:text="@string/weight_subtext"
+                        android:textColor="@color/kilau_muted"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. ALAMAT JEMPUT -->
+            <TextView
+                android:id="@+id/lbl_alamat_jemput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_berat"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="18dp"
+                android:letterSpacing="0.05"
+                android:text="@string/label_alamat_jemput"
+                android:textColor="@color/kilau_muted"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_alamat_jemput"
+                android:layout_marginTop="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/kilau_white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/kilau_border"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/img_location_bg"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_circle_icon">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_centerInParent="true"
+                            android:contentDescription="Location Icon"
+                            android:src="@drawable/ic_location" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/img_address_chevron"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Chevron"
+                        android:src="@drawable/ic_chevron_right" />
+
+                    <TextView
+                        android:id="@+id/tv_address_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/img_location_bg"
+                        android:layout_toStartOf="@id/img_address_chevron"
+                        android:text="@string/address_title"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_address_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_address_title"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@id/img_location_bg"
+                        android:layout_toStartOf="@id/img_address_chevron"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/address_detail"
+                        android:textColor="@color/kilau_muted"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. JADWAL PENJEMPUTAN -->
+            <TextView
+                android:id="@+id/lbl_jadwal_penjemputan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_alamat"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="18dp"
+                android:letterSpacing="0.05"
+                android:text="@string/label_jadwal_penjemputan"
+                android:textColor="@color/kilau_muted"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_jadwal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_jadwal_penjemputan"
+                android:layout_marginTop="6dp"
+                app:cardBackgroundColor="@color/kilau_white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/kilau_border"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/img_calendar_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:contentDescription="Calendar"
+                        android:src="@drawable/ic_calendar" />
+
+                    <TextView
+                        android:id="@+id/tv_pick_date_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@id/img_calendar_icon"
+                        android:text="@string/pick_date_label"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- Date Chips -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/cg_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_pick_date_label"
+                        android:layout_marginTop="10dp"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_today"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/chip_today"
+                            android:textColor="@color/chip_date_text_selector"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/chip_date_bg_selector"
+                            app:chipCornerRadius="8dp"
+                            app:chipIconVisible="false"
+                            app:chipStrokeColor="@color/chip_date_stroke_selector"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_tomorrow"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chip_tomorrow"
+                            android:textColor="@color/chip_date_text_selector"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/chip_date_bg_selector"
+                            app:chipCornerRadius="8dp"
+                            app:chipIconVisible="false"
+                            app:chipStrokeColor="@color/chip_date_stroke_selector"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_day_after"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chip_day_after"
+                            android:textColor="@color/chip_date_text_selector"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/chip_date_bg_selector"
+                            app:chipCornerRadius="8dp"
+                            app:chipIconVisible="false"
+                            app:chipStrokeColor="@color/chip_date_stroke_selector"
+                            app:chipStrokeWidth="1dp" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <TextView
+                        android:id="@+id/tv_pick_time_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cg_date"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/pick_time_label"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- Time Slot Chips -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/cg_time_slot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_pick_time_label"
+                        android:layout_marginTop="10dp"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_slot_1"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chip_slot_1"
+                            android:textColor="@color/chip_time_text_selector"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/chip_time_bg_selector"
+                            app:chipCornerRadius="8dp"
+                            app:chipIconVisible="false"
+                            app:chipStrokeColor="@color/chip_time_stroke_selector"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_slot_2"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chip_slot_2"
+                            android:textColor="@color/chip_time_text_selector"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/chip_time_bg_selector"
+                            app:chipCornerRadius="8dp"
+                            app:chipIconVisible="false"
+                            app:chipStrokeColor="@color/chip_time_stroke_selector"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_slot_3"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/chip_slot_3"
+                            android:textColor="@color/chip_time_text_selector"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/chip_time_bg_selector"
+                            app:chipCornerRadius="8dp"
+                            app:chipIconVisible="false"
+                            app:chipStrokeColor="@color/chip_time_stroke_selector"
+                            app:chipStrokeWidth="1dp" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. CATATAN -->
+            <TextView
+                android:id="@+id/lbl_catatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_jadwal"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="18dp"
+                android:letterSpacing="0.05"
+                android:text="@string/label_catatan"
+                android:textColor="@color/kilau_muted"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_catatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_catatan"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="110dp"
+                app:cardBackgroundColor="@color/kilau_white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/kilau_border"
+                app:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <EditText
+                        android:id="@+id/et_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="@string/notes_hint"
+                        android:inputType="textMultiLine"
+                        android:minLines="3"
+                        android:textColor="@color/kilau_navy"
+                        android:textColorHint="@color/kilau_muted"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- BOTTOM BAR -->
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/kilau_white"
+        android:elevation="8dp"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_order"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/kilau_primary"
+            android:paddingHorizontal="24dp"
+            android:text="@string/btn_pesan_sekarang"
+            android:textColor="@color/kilau_white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <TextView
+            android:id="@+id/tv_total_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/btn_order"
+            android:text="@string/total_estimate_label"
+            android:textColor="@color/kilau_muted"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_total_label"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="2dp"
+            android:layout_toStartOf="@id/btn_order"
+            android:text="Rp21.000"
+            android:textColor="@color/kilau_navy"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

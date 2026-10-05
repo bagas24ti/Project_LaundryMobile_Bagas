@@ -39,21 +39,42 @@ class HalamanSecond : AppCompatActivity() {
 
         // Service Item Click Listeners
         binding.itemKiloan.setOnClickListener {
-            Toast.makeText(this, "Layanan Kiloan dipilih", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, OrderActivity::class.java).apply {
+                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Kiloan")
+                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 7000)
+                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "2-3 hari kerja")
+            }
+            startActivity(intent)
         }
         binding.itemSatuan.setOnClickListener {
-            Toast.makeText(this, "Layanan Satuan dipilih", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, OrderActivity::class.java).apply {
+                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Satuan")
+                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 15000)
+                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "1-2 hari kerja")
+            }
+            startActivity(intent)
         }
         binding.itemExpress.setOnClickListener {
-            Toast.makeText(this, "Layanan Express dipilih", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, OrderActivity::class.java).apply {
+                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Express")
+                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 12000)
+                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "1 hari kerja")
+            }
+            startActivity(intent)
         }
         binding.itemSepatu.setOnClickListener {
-            Toast.makeText(this, "Layanan Sepatu dipilih", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, OrderActivity::class.java).apply {
+                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Sepatu")
+                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 25000)
+                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "2 hari kerja")
+            }
+            startActivity(intent)
         }
 
         // Button Click Listeners
         binding.btnBuatPesanan.setOnClickListener {
-            Toast.makeText(this, "Membuat Pesanan Baru...", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, OrderActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnTipsPakaian.setOnClickListener {

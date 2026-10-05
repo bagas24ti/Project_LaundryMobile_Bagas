@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">Project_Laundry_Bagas</string>
+    <string name="title_buat_pesanan">Buat Pesanan</string>
+    <string name="label_layanan">LAYANAN</string>
+    <string name="label_estimasi_berat">ESTIMASI BERAT</string>
+    <string name="label_alamat_jemput">ALAMAT JEMPUT</string>
+    <string name="label_jadwal_penjemputan">JADWAL PENJEMPUTAN</string>
+    <string name="label_catatan">CATATAN UNTUK KURIR / OUTLET</string>
+
+    <string name="default_service_name">Cuci + Setrika</string>
+    <string name="default_service_detail">Rp7.000 / kg · 2&#8211;3 hari kerja</string>
+    <string name="service_detail_format">%1$s / kg · %2$s</string>
+    <string name="weight_title">Berat Cucian</string>
+    <string name="weight_subtext">Ditagih sesuai berat aktual</string>
+    <string name="default_weight_value">3 kg</string>
+    <string name="weight_format">%1$d kg</string>
+
+    <string name="address_title">Rumah</string>
+    <string name="address_detail">Jl. Soekarno-Hatta No. 12, Pekanbaru</string>
+
+    <string name="pick_date_label">Pilih tanggal:</string>
+    <string name="pick_time_label">Pilih slot waktu:</string>
+    <string name="chip_today">Hari ini</string>
+    <string name="chip_tomorrow">Besok</string>
+    <string name="chip_day_after">Lusa</string>
+    <string name="chip_slot_1">08.00-10.00</string>
+    <string name="chip_slot_2">12.00-14.00</string>
+    <string name="chip_slot_3">16.00-18.00</string>
+
+    <string name="notes_hint">Misalnya: baju putih dipisah dengan berwarna&#8230;</string>
+    <string name="total_estimate_label">Estimasi total</string>
+    <string name="btn_pesan_sekarang">Pesan Sekarang</string>
+
+    <string name="toast_select_address">Pilih alamat</string>
+    <string name="toast_select_time_first">Pilih slot waktu terlebih dahulu</string>
 </resources>

@@ -33,6 +33,11 @@
             android:name=".WebViewActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OrderActivity"
+            android:exported="false"
+            android:parentActivityName=".HalamanSecond"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
