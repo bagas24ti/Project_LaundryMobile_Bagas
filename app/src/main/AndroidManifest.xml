@@ -15,29 +15,46 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Project_Laundry_Bagas">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true"
+            android:theme="@style/Theme.Project_Laundry_Bagas"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".HalamanSecond"
+            android:name=".AuthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
-            android:name=".WebViewActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".HalamanProfil"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".OrderActivity"
             android:exported="false"
-            android:parentActivityName=".HalamanSecond"
+            android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

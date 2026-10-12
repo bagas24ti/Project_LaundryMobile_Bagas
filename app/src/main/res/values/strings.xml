@@ -1,5 +1,31 @@
 <resources>
-    <string name="app_name">Project_Laundry_Bagas</string>
+    <string name="app_name">Kilau Laundry</string>
+    <string name="brand_name">kilau</string>
+    <string name="tagline_splash">LAUNDRY ANTAR-JEMPUT</string>
+    <string name="headline_splash">Cucian bersih,\nhidup ringan.</string>
+    <string name="app_version">Versi 1.0</string>
+
+    <string name="auth_header_title">Masuk untuk mulai memesan</string>
+    <string name="welcome_title">Selamat Datang!</string>
+    <string name="welcome_subtitle">Silakan masuk menggunakan akun kamu</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Kata sandi</string>
+    <string name="btn_login">Masuk</string>
+    <string name="register_prompt">Belum punya akun? Daftar</string>
+
+    <string name="title_beranda">Beranda</string>
+    <string name="greeting_user">Halo, %1$s</string>
+    <string name="title_layanan_utama">Layanan Utama</string>
+    <string name="title_pesanan_aktif">Pesanan Aktif</string>
+    <string name="btn_buat_pesanan_baru">Buat Pesanan Baru</string>
+    <string name="btn_tips_pakaian">Tips Merawat Pakaian</string>
+    <string name="btn_logout">Keluar</string>
+
+    <string name="dialog_logout_title">Keluar</string>
+    <string name="dialog_logout_message">Apakah kamu yakin ingin keluar?</string>
+    <string name="dialog_yes">Ya</string>
+    <string name="dialog_cancel">Batal</string>
+
     <string name="title_buat_pesanan">Buat Pesanan</string>
     <string name="label_layanan">LAYANAN</string>
     <string name="label_estimasi_berat">ESTIMASI BERAT</string>
@@ -33,4 +59,17 @@
 
     <string name="toast_select_address">Pilih alamat</string>
     <string name="toast_select_time_first">Pilih slot waktu terlebih dahulu</string>
+
+    <string name="title_profil_saya">Profil Saya</string>
+    <string name="title_informasi_akun">Informasi Akun</string>
+    <string name="member_status_points">Member Silver &#8211; 120 poin</string>
+    <string name="sample_phone">0812-xxxx-1234</string>
+    <string name="menu_alamat_tersimpan">Alamat Tersimpan</string>
+    <string name="menu_metode_pembayaran">Metode Pembayaran</string>
+    <string name="menu_voucher_poin">Voucher &amp; Poin</string>
+    <string name="menu_notifikasi">Notifikasi</string>
+    <string name="menu_bantuan">Bantuan</string>
+    <string name="action_edit_profile">Ubah Profil</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="action_profile">Profil</string>
 </resources>
