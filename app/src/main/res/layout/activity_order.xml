@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/kilau_background"
-    tools:context=".OrderActivity">
+    tools:context=".home.OrderActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -75,7 +75,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:contentDescription="Check"
-                        android:src="@drawable/ic_check_circle" />
+                        android:src="@drawable/ic_add" />
 
                     <TextView
                         android:id="@+id/tv_service_name"
@@ -165,8 +165,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@id/tv_weight_value"
                         android:background="@drawable/bg_button_minus"
-                        android:contentDescription="Minus"
-                        android:src="@drawable/ic_remove" />
+                        android:contentDescription="Minus" />
 
                     <!-- Text Left Side -->
                     <TextView
@@ -242,18 +241,9 @@
                             android:layout_height="22dp"
                             android:layout_centerInParent="true"
                             android:contentDescription="Location Icon"
-                            android:src="@drawable/ic_location" />
+                            android:src="@drawable/ic_home" />
 
                     </RelativeLayout>
-
-                    <ImageView
-                        android:id="@+id/img_address_chevron"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:contentDescription="Chevron"
-                        android:src="@drawable/ic_chevron_right" />
 
                     <TextView
                         android:id="@+id/tv_address_title"
@@ -261,7 +251,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@id/img_location_bg"
-                        android:layout_toStartOf="@id/img_address_chevron"
                         android:text="@string/address_title"
                         android:textColor="@color/kilau_navy"
                         android:textSize="15sp"
@@ -275,7 +264,6 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="2dp"
                         android:layout_toEndOf="@id/img_location_bg"
-                        android:layout_toStartOf="@id/img_address_chevron"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:text="@string/address_detail"
@@ -323,7 +311,7 @@
                         android:layout_height="20dp"
                         android:layout_alignParentStart="true"
                         android:contentDescription="Calendar"
-                        android:src="@drawable/ic_calendar" />
+                        android:src="@drawable/ic_history" />
 
                     <TextView
                         android:id="@+id/tv_pick_date_label"

@@ -156,7 +156,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="Phone"
-                            android:src="@drawable/ic_phone"
+                            android:src="@drawable/ic_person"
                             app:tint="@color/kilau_primary" />
 
                         <TextView
@@ -182,7 +182,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="Location"
-                            android:src="@drawable/ic_location"
+                            android:src="@drawable/ic_home"
                             app:tint="@color/kilau_primary" />
 
                         <TextView
@@ -232,7 +232,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="@string/menu_alamat_tersimpan"
-                            android:src="@drawable/ic_location"
+                            android:src="@drawable/ic_home"
                             app:tint="@color/kilau_navy" />
 
                         <TextView
@@ -244,13 +244,6 @@
                             android:textColor="@color/kilau_navy"
                             android:textSize="14sp"
                             android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="Chevron"
-                            android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/kilau_muted" />
 
                     </LinearLayout>
 
@@ -281,7 +274,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="@string/menu_metode_pembayaran"
-                            android:src="@drawable/ic_check_circle"
+                            android:src="@drawable/ic_add"
                             app:tint="@color/kilau_navy" />
 
                         <TextView
@@ -293,13 +286,6 @@
                             android:textColor="@color/kilau_navy"
                             android:textSize="14sp"
                             android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="Chevron"
-                            android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/kilau_muted" />
 
                     </LinearLayout>
 
@@ -330,7 +316,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="@string/menu_voucher_poin"
-                            android:src="@drawable/ic_express"
+                            android:src="@drawable/ic_add"
                             app:tint="@color/kilau_navy" />
 
                         <TextView
@@ -342,13 +328,6 @@
                             android:textColor="@color/kilau_navy"
                             android:textSize="14sp"
                             android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="Chevron"
-                            android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/kilau_muted" />
 
                     </LinearLayout>
 
@@ -379,7 +358,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="@string/menu_notifikasi"
-                            android:src="@drawable/ic_calendar"
+                            android:src="@drawable/ic_history"
                             app:tint="@color/kilau_navy" />
 
                         <TextView
@@ -391,13 +370,6 @@
                             android:textColor="@color/kilau_navy"
                             android:textSize="14sp"
                             android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="Chevron"
-                            android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/kilau_muted" />
 
                     </LinearLayout>
 
@@ -428,7 +400,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="@string/btn_tips_pakaian"
-                            android:src="@drawable/ic_search"
+                            android:src="@drawable/ic_home"
                             app:tint="@color/kilau_navy" />
 
                         <TextView
@@ -440,13 +412,6 @@
                             android:textColor="@color/kilau_navy"
                             android:textSize="14sp"
                             android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="Chevron"
-                            android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/kilau_muted" />
 
                     </LinearLayout>
 
@@ -477,7 +442,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:contentDescription="@string/menu_bantuan"
-                            android:src="@drawable/ic_settings"
+                            android:src="@drawable/ic_person"
                             app:tint="@color/kilau_navy" />
 
                         <TextView
@@ -489,13 +454,6 @@
                             android:textColor="@color/kilau_navy"
                             android:textSize="14sp"
                             android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="Chevron"
-                            android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/kilau_muted" />
 
                     </LinearLayout>
 
