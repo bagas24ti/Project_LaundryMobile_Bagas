@@ -25,8 +25,6 @@ class AuthActivity : AppCompatActivity() {
             insets
         }
 
-        // Pengecekan status login diletakkan di awal/splash screen (SplashScreenActivity)
-        // agar user yang sudah login tidak melihat kilasan layar login sebelum diarahkan ke MainActivity.
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
@@ -42,14 +40,13 @@ class AuthActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
             if (username == password) {
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
                 editor.putString("username", username)
                 editor.apply()
 
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             } else {
                 AlertDialog.Builder(this)

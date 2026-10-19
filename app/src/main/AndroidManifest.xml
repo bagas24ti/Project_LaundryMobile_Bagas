@@ -33,26 +33,26 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".BaseActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".HalamanProfil"
+            android:name=".home.LayananActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".BaseActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".OrderActivity"
+            android:name=".home.OrderActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".BaseActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".WebViewActivity"
+            android:name=".home.WebViewActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".BaseActivity"
             android:windowSoftInputMode="adjustResize" />
 
     </application>

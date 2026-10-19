@@ -1,4 +1,4 @@
-package com.example.project_laundry_bagas
+package com.example.project_laundry_bagas.home
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.project_laundry_bagas.R
 import com.example.project_laundry_bagas.databinding.ActivityOrderBinding
 import com.google.android.material.chip.Chip
 import java.text.NumberFormat
@@ -49,7 +50,6 @@ class OrderActivity : AppCompatActivity() {
             insets
         }
 
-        // Restore saved state or get Intent extras
         if (savedInstanceState != null) {
             weight = savedInstanceState.getInt(KEY_WEIGHT, DEFAULT_WEIGHT)
         }
@@ -98,7 +98,6 @@ class OrderActivity : AppCompatActivity() {
             handleOrderSubmit()
         }
 
-        // Handle Back Press
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 finish()
@@ -109,7 +108,6 @@ class OrderActivity : AppCompatActivity() {
     private fun updateWeightUI() {
         binding.tvWeightValue.text = getString(R.string.weight_format, weight)
 
-        // Enable / Disable buttons with visual feedback
         binding.btnMinus.isEnabled = weight > MIN_WEIGHT
         binding.btnMinus.alpha = if (weight > MIN_WEIGHT) 1.0f else 0.4f
 
@@ -121,7 +119,6 @@ class OrderActivity : AppCompatActivity() {
     }
 
     private fun handleOrderSubmit() {
-        // Date Selection
         val selectedDateChipId = binding.cgDate.checkedChipId
         val dateText = if (selectedDateChipId != View.NO_ID) {
             binding.cgDate.findViewById<Chip>(selectedDateChipId)?.text?.toString() ?: getString(R.string.chip_today)
@@ -129,7 +126,6 @@ class OrderActivity : AppCompatActivity() {
             getString(R.string.chip_today)
         }
 
-        // Time Slot Selection
         val selectedTimeSlotChipId = binding.cgTimeSlot.checkedChipId
         if (selectedTimeSlotChipId == View.NO_ID) {
             Toast.makeText(this, getString(R.string.toast_select_time_first), Toast.LENGTH_SHORT).show()

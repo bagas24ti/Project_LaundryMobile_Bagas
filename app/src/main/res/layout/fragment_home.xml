@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/kilau_background"
-    tools:context=".MainActivity">
+    tools:context=".home.HomeFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/bg_splash_gradient"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/title_beranda"
-            app:titleTextColor="@color/kilau_white"
-            app:subtitleTextColor="#D1E2FF" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_splash_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/title_beranda"
+        app:titleTextColor="@color/kilau_white"
+        app:subtitleTextColor="#D1E2FF" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -336,7 +332,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_below="@id/card_pesanan"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/kilau_primary"
                 android:text="@string/btn_buat_pesanan_baru"
                 android:textColor="@color/kilau_white"
@@ -348,13 +344,28 @@
                 app:iconPadding="8dp"
                 app:iconTint="@color/kilau_white" />
 
+            <!-- Tombol Lihat Layanan (Bagian A) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_lihat_layanan"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/btn_buat_pesanan"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/kilau_primary_light"
+                android:text="Lihat Layanan"
+                android:textColor="@color/kilau_white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp" />
+
             <!-- Tombol Tips Merawat Pakaian -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_tips_pakaian"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_below="@id/btn_buat_pesanan"
-                android:layout_marginTop="12dp"
+                android:layout_below="@id/btn_lihat_layanan"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/kilau_yellow"
                 android:text="@string/btn_tips_pakaian"
                 android:textColor="@color/kilau_navy"
@@ -362,22 +373,8 @@
                 android:textStyle="bold"
                 app:cornerRadius="12dp" />
 
-            <!-- Tombol Keluar (Logout) -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogout"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_below="@id/btn_tips_pakaian"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="32dp"
-                android:background="@drawable/bg_button_outline"
-                android:text="@string/btn_logout"
-                android:textColor="@color/kilau_error"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
