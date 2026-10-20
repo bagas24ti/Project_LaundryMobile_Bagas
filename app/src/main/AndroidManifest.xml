@@ -13,9 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Project_Laundry_Bagas">
-
+        android:theme="@style/Theme.Project_Laundry_Bagas"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -23,38 +22,41 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AuthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".BaseActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".home.LayananActivity"
             android:exported="false"
             android:parentActivityName=".BaseActivity"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".home.OrderActivity"
             android:exported="false"
             android:parentActivityName=".BaseActivity"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".home.WebViewActivity"
             android:exported="false"
             android:parentActivityName=".BaseActivity"
             android:windowSoftInputMode="adjustResize" />
-
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OtpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

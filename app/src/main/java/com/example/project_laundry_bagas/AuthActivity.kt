@@ -40,10 +40,17 @@ class AuthActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (username == password) {
+            val regPref = getSharedPreferences("register_pref", MODE_PRIVATE)
+            val regUsername = regPref.getString("username", null)
+            val regPassword = regPref.getString("password", null)
+
+            val isRegisteredUser = regUsername != null && username == regUsername && password == regPassword
+            val isDemoUser = username == password
+
+            if (isRegisteredUser || isDemoUser) {
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
+                editor.putString("username", if (isRegisteredUser) regUsername else username)
                 editor.apply()
 
                 startActivity(Intent(this, BaseActivity::class.java))
@@ -51,12 +58,20 @@ class AuthActivity : AppCompatActivity() {
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
-                    .setMessage("Silahkan coba lagi")
+                    .setMessage("Username atau kata sandi tidak cocok. Silakan coba lagi.")
                     .setPositiveButton("OK") { dialog, _ ->
                         dialog.dismiss()
                     }
                     .show()
             }
+        }
+
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        binding.tvRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }

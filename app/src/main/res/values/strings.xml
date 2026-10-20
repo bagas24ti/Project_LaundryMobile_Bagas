@@ -11,6 +11,7 @@
     <string name="hint_username">Username</string>
     <string name="hint_password">Kata sandi</string>
     <string name="btn_login">Masuk</string>
+    <string name="btn_register">Daftar Akun</string>
     <string name="register_prompt">Belum punya akun? Daftar</string>
 
     <string name="title_beranda">Beranda</string>
