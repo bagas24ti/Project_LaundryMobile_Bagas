@@ -46,7 +46,6 @@ class HomeFragment : Fragment() {
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.main_menu, menu)
-                // Hide profile menu item on home fragment if present
                 menu.findItem(R.id.action_profile)?.isVisible = false
             }
 
@@ -65,9 +64,10 @@ class HomeFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        // Service Items Click Listeners
+        // Klik 4 Kotak Layanan Utama -> Buka OrderActivity dengan extra_layanan
         binding.itemKiloan.setOnClickListener {
             val intent = Intent(requireContext(), OrderActivity::class.java).apply {
+                putExtra("extra_layanan", "Kiloan")
                 putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Kiloan")
                 putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 7000)
                 putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "2-3 hari kerja")
@@ -77,6 +77,7 @@ class HomeFragment : Fragment() {
 
         binding.itemSatuan.setOnClickListener {
             val intent = Intent(requireContext(), OrderActivity::class.java).apply {
+                putExtra("extra_layanan", "Satuan")
                 putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Satuan")
                 putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 15000)
                 putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "1-2 hari kerja")
@@ -86,6 +87,7 @@ class HomeFragment : Fragment() {
 
         binding.itemExpress.setOnClickListener {
             val intent = Intent(requireContext(), OrderActivity::class.java).apply {
+                putExtra("extra_layanan", "Express")
                 putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Express")
                 putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 12000)
                 putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "1 hari kerja")
@@ -95,6 +97,7 @@ class HomeFragment : Fragment() {
 
         binding.itemSepatu.setOnClickListener {
             val intent = Intent(requireContext(), OrderActivity::class.java).apply {
+                putExtra("extra_layanan", "Sepatu")
                 putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Sepatu")
                 putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 25000)
                 putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "2 hari kerja")
@@ -102,20 +105,43 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Action Buttons
+        // Tombol Buat Pesanan Baru (default extra_layanan "Kiloan")
         binding.btnBuatPesanan.setOnClickListener {
-            val intent = Intent(requireContext(), OrderActivity::class.java)
+            val intent = Intent(requireContext(), OrderActivity::class.java).apply {
+                putExtra("extra_layanan", "Kiloan")
+            }
             startActivity(intent)
         }
 
-        binding.btnLihatLayanan.setOnClickListener {
-            val intent = Intent(requireContext(), LayananActivity::class.java)
-            startActivity(intent)
-        }
-
+        // Tombol Tips Merawat Pakaian
         binding.btnTipsPakaian.setOnClickListener {
             val intent = Intent(requireContext(), WebViewActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateActiveOrderCard()
+    }
+
+    private fun updateActiveOrderCard() {
+        val orderPrefs = requireContext().getSharedPreferences("order_pref", Context.MODE_PRIVATE)
+        val lastOrderId = orderPrefs.getString("last_order_id", null)
+        val lastOrderJadwal = orderPrefs.getString("last_order_jadwal", null)
+        val lastOrderStatus = orderPrefs.getString("last_order_status", null)
+        val lastOrderService = orderPrefs.getString("last_order_service", "Cuci Regular")
+
+        if (lastOrderId != null && lastOrderJadwal != null && lastOrderStatus != null) {
+            binding.tvOrderId.text = "No. Pesanan: $lastOrderId"
+            binding.tvOrderStatus.text = lastOrderStatus
+            binding.tvOrderService.text = "Layanan: $lastOrderService"
+            binding.tvOrderDate.text = "Jadwal: $lastOrderJadwal"
+        } else {
+            binding.tvOrderId.text = "Belum Ada Pesanan"
+            binding.tvOrderStatus.text = "Kosong"
+            binding.tvOrderService.text = "Belum ada pesanan aktif"
+            binding.tvOrderDate.text = "Silakan buat pesanan baru"
         }
     }
 

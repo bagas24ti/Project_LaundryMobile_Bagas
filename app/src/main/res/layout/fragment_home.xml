@@ -77,6 +77,7 @@
                     android:background="@drawable/bg_service_item"
                     android:clickable="true"
                     android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:padding="8dp">
 
                     <ImageView
@@ -113,6 +114,7 @@
                     android:background="@drawable/bg_service_item"
                     android:clickable="true"
                     android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:padding="8dp">
 
                     <ImageView
@@ -148,6 +150,7 @@
                     android:background="@drawable/bg_service_item"
                     android:clickable="true"
                     android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:padding="8dp">
 
                     <ImageView
@@ -183,6 +186,7 @@
                     android:background="@drawable/bg_service_item"
                     android:clickable="true"
                     android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:padding="8dp">
 
                     <ImageView
@@ -344,27 +348,13 @@
                 app:iconPadding="8dp"
                 app:iconTint="@color/kilau_white" />
 
-            <!-- Tombol Lihat Layanan (Bagian A) -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_lihat_layanan"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_below="@id/btn_buat_pesanan"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/kilau_primary_light"
-                android:text="Lihat Layanan"
-                android:textColor="@color/kilau_white"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:cornerRadius="12dp" />
-
             <!-- Tombol Tips Merawat Pakaian -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_tips_pakaian"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_below="@id/btn_lihat_layanan"
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/btn_buat_pesanan"
+                android:layout_marginTop="12dp"
                 android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/kilau_yellow"
                 android:text="@string/btn_tips_pakaian"

@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.project_laundry_bagas.databinding.ActivitySplashScreenBinding
+import com.example.project_laundry_bagas.home.NotificationHelper
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -20,6 +21,9 @@ class SplashScreenActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Inisialisasi NotificationChannel sekali saja saat aplikasi dibuka
+        NotificationHelper.createChannel(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

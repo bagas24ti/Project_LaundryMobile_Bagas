@@ -1,19 +1,36 @@
 package com.example.project_laundry_bagas.home
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.project_laundry_bagas.R
 import com.example.project_laundry_bagas.databinding.ActivityOrderBinding
-import com.google.android.material.chip.Chip
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 class OrderActivity : AppCompatActivity() {
 
@@ -24,6 +41,11 @@ class OrderActivity : AppCompatActivity() {
     private var serviceName: String = DEFAULT_SERVICE_NAME
     private var estimateDays: String = DEFAULT_ESTIMATE_DAYS
 
+    // Variable untuk menyimpan nilai dari MaterialDatePicker dan MaterialTimePicker
+    private var selectedTimestampUtc: Long? = null
+    private var selectedHour: Int? = null
+    private var selectedMinute: Int? = null
+
     companion object {
         const val EXTRA_SERVICE_NAME = "extra_service_name"
         const val EXTRA_PRICE_PER_KG = "extra_price_per_kg"
@@ -32,7 +54,7 @@ class OrderActivity : AppCompatActivity() {
         private const val KEY_WEIGHT = "key_weight"
         private const val DEFAULT_WEIGHT = 3
         private const val DEFAULT_PRICE_PER_KG = 7000
-        private const val DEFAULT_SERVICE_NAME = "Cuci + Setrika"
+        private const val DEFAULT_SERVICE_NAME = "Cuci Kiloan"
         private const val DEFAULT_ESTIMATE_DAYS = "2-3 hari kerja"
         private const val MIN_WEIGHT = 1
         private const val MAX_WEIGHT = 30
@@ -54,9 +76,29 @@ class OrderActivity : AppCompatActivity() {
             weight = savedInstanceState.getInt(KEY_WEIGHT, DEFAULT_WEIGHT)
         }
 
-        serviceName = intent.getStringExtra(EXTRA_SERVICE_NAME) ?: DEFAULT_SERVICE_NAME
-        pricePerKg = intent.getIntExtra(EXTRA_PRICE_PER_KG, DEFAULT_PRICE_PER_KG)
-        estimateDays = intent.getStringExtra(EXTRA_ESTIMATE_DAYS) ?: DEFAULT_ESTIMATE_DAYS
+        // Baca extra_layanan dari Intent (default "Kiloan")
+        val extraLayanan = intent.getStringExtra("extra_layanan") ?: intent.getStringExtra(EXTRA_SERVICE_NAME) ?: "Kiloan"
+        serviceName = when (extraLayanan) {
+            "Kiloan", "Cuci Kiloan" -> "Cuci Kiloan"
+            "Satuan", "Cuci Satuan" -> "Cuci Satuan"
+            "Express", "Cuci Express" -> "Cuci Express"
+            "Sepatu", "Cuci Sepatu" -> "Cuci Sepatu"
+            else -> "Cuci $extraLayanan"
+        }
+
+        pricePerKg = when (serviceName) {
+            "Cuci Satuan" -> 15000
+            "Cuci Express" -> 12000
+            "Cuci Sepatu" -> 25000
+            else -> intent.getIntExtra(EXTRA_PRICE_PER_KG, 7000)
+        }
+
+        estimateDays = when (serviceName) {
+            "Cuci Satuan" -> "1-2 hari kerja"
+            "Cuci Express" -> "1 hari kerja"
+            "Cuci Sepatu" -> "2 hari kerja"
+            else -> intent.getStringExtra(EXTRA_ESTIMATE_DAYS) ?: "2-3 hari kerja"
+        }
 
         // 1. Toolbar Setup
         setSupportActionBar(binding.toolbar)
@@ -93,7 +135,17 @@ class OrderActivity : AppCompatActivity() {
             }
         }
 
-        // 5. Order Button
+        // 5. MaterialDatePicker untuk Tanggal Jemput
+        binding.etTanggal.setOnClickListener {
+            showDatePicker()
+        }
+
+        // 6. MaterialTimePicker untuk Jam Jemput
+        binding.etJam.setOnClickListener {
+            showTimePicker()
+        }
+
+        // 7. Order Button Click
         binding.btnOrder.setOnClickListener {
             handleOrderSubmit()
         }
@@ -103,6 +155,50 @@ class OrderActivity : AppCompatActivity() {
                 finish()
             }
         })
+    }
+
+    private fun showDatePicker() {
+        val constraints = CalendarConstraints.Builder()
+            .setValidator(DateValidatorPointForward.now())
+            .build()
+
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Pilih tanggal jemput")
+            .setCalendarConstraints(constraints)
+            .setSelection(selectedTimestampUtc ?: MaterialDatePicker.todayInUtcMilliseconds())
+            .build()
+
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            selectedTimestampUtc = selection
+            val formatter = SimpleDateFormat("dd MMM yyyy",
+                Locale.Builder().setLanguage("id").setRegion("ID").build()).apply {
+                timeZone = TimeZone.getTimeZone("UTC")
+            }
+            binding.etTanggal.setText(formatter.format(Date(selection)))
+            binding.etTanggal.error = null
+        }
+
+        datePicker.show(supportFragmentManager, "DATE_PICKER")
+    }
+
+    private fun showTimePicker() {
+        val timePicker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setHour(selectedHour ?: 12)
+            .setMinute(selectedMinute ?: 0)
+            .setTitleText("Pilih jam jemput")
+            .build()
+
+        timePicker.addOnPositiveButtonClickListener {
+            selectedHour = timePicker.hour
+            selectedMinute = timePicker.minute
+            val formattedTime = String.format(Locale.getDefault(),
+                "%02d:%02d", timePicker.hour, timePicker.minute)
+            binding.etJam.setText(formattedTime)
+            binding.etJam.error = null
+        }
+
+        timePicker.show(supportFragmentManager, "TIME_PICKER")
     }
 
     private fun updateWeightUI() {
@@ -119,24 +215,115 @@ class OrderActivity : AppCompatActivity() {
     }
 
     private fun handleOrderSubmit() {
-        val selectedDateChipId = binding.cgDate.checkedChipId
-        val dateText = if (selectedDateChipId != View.NO_ID) {
-            binding.cgDate.findViewById<Chip>(selectedDateChipId)?.text?.toString() ?: getString(R.string.chip_today)
-        } else {
-            getString(R.string.chip_today)
-        }
+        val dateStr = binding.etTanggal.text?.toString()?.trim() ?: ""
+        val timeStr = binding.etJam.text?.toString()?.trim() ?: ""
 
-        val selectedTimeSlotChipId = binding.cgTimeSlot.checkedChipId
-        if (selectedTimeSlotChipId == View.NO_ID) {
-            Toast.makeText(this, getString(R.string.toast_select_time_first), Toast.LENGTH_SHORT).show()
+        if (dateStr.isEmpty() || timeStr.isEmpty()) {
+            if (dateStr.isEmpty()) binding.etTanggal.error = "Pilih tanggal jemput"
+            if (timeStr.isEmpty()) binding.etJam.error = "Pilih jam jemput"
+            Toast.makeText(this, "Pilih tanggal dan jam jemput terlebih dahulu", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val timeText = binding.cgTimeSlot.findViewById<Chip>(selectedTimeSlotChipId)?.text?.toString() ?: ""
+        if (selectedTimestampUtc != null && selectedHour != null && selectedMinute != null) {
+            val nowCalendar = Calendar.getInstance()
+            val selectedCalendar = Calendar.getInstance(TimeZone.getTimeZone("UTC")).apply {
+                timeInMillis = selectedTimestampUtc!!
+            }
 
-        val summaryMessage = "Pesanan $weight kg ($serviceName) dijadwalkan $dateText, $timeText"
-        Toast.makeText(this, summaryMessage, Toast.LENGTH_LONG).show()
+            val isToday = nowCalendar.get(Calendar.YEAR) == selectedCalendar.get(Calendar.YEAR) &&
+                    nowCalendar.get(Calendar.DAY_OF_YEAR) == selectedCalendar.get(Calendar.DAY_OF_YEAR)
 
+            if (isToday) {
+                val currentHour = nowCalendar.get(Calendar.HOUR_OF_DAY)
+                val currentMinute = nowCalendar.get(Calendar.MINUTE)
+
+                if (selectedHour!! < currentHour || (selectedHour!! == currentHour && selectedMinute!! <= currentMinute)) {
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle("Peringatan")
+                        .setMessage("Jam jemput sudah terlewat")
+                        .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                        .show()
+                    return
+                }
+            }
+        }
+
+        val orderNumber = "#KL-${System.currentTimeMillis().toString().takeLast(4)}"
+        val orderSchedule = "$dateStr, $timeStr"
+
+        val orderPrefs = getSharedPreferences("order_pref", MODE_PRIVATE)
+        orderPrefs.edit().apply {
+            putString("last_order_id", orderNumber)
+            putString("last_order_jadwal", orderSchedule)
+            putString("last_order_service", serviceName)
+            putString("last_order_status", "Menunggu dijemput")
+            apply()
+        }
+
+        sendOrderNotifications(orderNumber, orderSchedule)
+    }
+
+    private fun sendOrderNotifications(orderNumber: String, orderSchedule: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Izin Notifikasi")
+                    .setMessage("Aplikasi memerlukan izin notifikasi untuk memberikan pembaruan status pesanan Kilau Laundry.")
+                    .setPositiveButton("Izinkan") { _, _ ->
+                        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    }
+                    .setNegativeButton("Nanti") { _, _ ->
+                        finishOrderProcess(orderNumber)
+                    }
+                    .show()
+                return
+            }
+        }
+
+        triggerNotifications(orderNumber, orderSchedule)
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        val orderPrefs = getSharedPreferences("order_pref", Context.MODE_PRIVATE)
+        val orderNumber = orderPrefs.getString("last_order_id", "") ?: ""
+        val orderSchedule = orderPrefs.getString("last_order_jadwal", "") ?: ""
+
+        if (isGranted) {
+            triggerNotifications(orderNumber, orderSchedule)
+        } else {
+            finishOrderProcess(orderNumber)
+        }
+    }
+
+    private fun triggerNotifications(orderNumber: String, orderSchedule: String) {
+        NotificationHelper.showOrderNotification(
+            this,
+            "Pesanan Diterima",
+            "Pesanan $orderNumber berhasil dibuat. Jadwal penjemputan: $orderSchedule",
+            notificationId = 1001
+        )
+
+        lifecycleScope.launch {
+            delay(10000)
+            val orderPrefs = getSharedPreferences("order_pref", Context.MODE_PRIVATE)
+            orderPrefs.edit().putString("last_order_status", "Sedang diproses").apply()
+
+            NotificationHelper.showOrderNotification(
+                this@OrderActivity,
+                "Pesanan Sedang Diproses",
+                "Pesanan $orderNumber sedang dalam proses pencucian.",
+                notificationId = 1002
+            )
+        }
+
+        finishOrderProcess(orderNumber)
+    }
+
+    private fun finishOrderProcess(orderNumber: String) {
+        Toast.makeText(this, "Pesanan $orderNumber berhasil dibuat!", Toast.LENGTH_LONG).show()
         finish()
     }
 

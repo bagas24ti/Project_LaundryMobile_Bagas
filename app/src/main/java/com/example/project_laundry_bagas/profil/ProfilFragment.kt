@@ -48,6 +48,16 @@ class ProfilFragment : Fragment() {
         binding.tvProfileName.text = username
         binding.tvInfoUsername.text = username
 
+        // Preference Switch Notifikasi (Fitur 2)
+        val isNotifEnabled = sharedPref.getBoolean("notif_enabled", true)
+        binding.switchNotif.isChecked = isNotifEnabled
+
+        binding.switchNotif.setOnCheckedChangeListener { _, isChecked ->
+            sharedPref.edit().putBoolean("notif_enabled", isChecked).apply()
+            val msg = if (isChecked) "Notifikasi pesanan diaktifkan" else "Notifikasi pesanan dinonaktifkan"
+            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        }
+
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_profil, menu)
