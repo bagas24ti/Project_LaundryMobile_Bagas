@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.project_laundry_bagas.R
 import com.example.project_laundry_bagas.databinding.FragmentHomeBinding
 
@@ -64,59 +65,47 @@ class HomeFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        // Klik 4 Kotak Layanan Utama -> Buka OrderActivity dengan extra_layanan
-        binding.itemKiloan.setOnClickListener {
+        val layanan = listOf(
+            LayananModel("kiloan", "Kiloan", "Cuci pakaian harian", "Rp7.000/kg", "👕"),
+            LayananModel("satuan", "Satuan", "Cuci pakaian khusus", "Rp25.000/item", "🧥"),
+            LayananModel("express", "Express", "Selesai lebih cepat", "Rp12.000/kg", "⚡"),
+            LayananModel("sepatu", "Sepatu", "Perawatan sepatu", "Rp30.000/pasang", "👟")
+        )
+        binding.rvLayanan.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvLayanan.isNestedScrollingEnabled = false
+        binding.rvLayanan.adapter = LayananAdapter(layanan) { item ->
             val intent = Intent(requireContext(), OrderActivity::class.java).apply {
-                putExtra("extra_layanan", "Kiloan")
-                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Kiloan")
-                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 7000)
-                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "2-3 hari kerja")
+                putExtra("extra_layanan", item.nama)
+                putExtra(
+                    OrderActivity.EXTRA_PRICE_PER_KG,
+                    when (item.kode) {
+                        "satuan" -> 25000
+                        "express" -> 12000
+                        "sepatu" -> 30000
+                        else -> 7000
+                    }
+                )
+                putExtra(
+                    OrderActivity.EXTRA_ESTIMATE_DAYS,
+                    when (item.kode) {
+                        "satuan" -> "1-2 hari kerja"
+                        "express" -> "1 hari kerja"
+                        "sepatu" -> "2 hari kerja"
+                        else -> "2-3 hari kerja"
+                    }
+                )
             }
             startActivity(intent)
         }
 
-        binding.itemSatuan.setOnClickListener {
-            val intent = Intent(requireContext(), OrderActivity::class.java).apply {
-                putExtra("extra_layanan", "Satuan")
-                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Satuan")
-                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 15000)
-                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "1-2 hari kerja")
-            }
-            startActivity(intent)
-        }
-
-        binding.itemExpress.setOnClickListener {
-            val intent = Intent(requireContext(), OrderActivity::class.java).apply {
-                putExtra("extra_layanan", "Express")
-                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Express")
-                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 12000)
-                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "1 hari kerja")
-            }
-            startActivity(intent)
-        }
-
-        binding.itemSepatu.setOnClickListener {
-            val intent = Intent(requireContext(), OrderActivity::class.java).apply {
-                putExtra("extra_layanan", "Sepatu")
-                putExtra(OrderActivity.EXTRA_SERVICE_NAME, "Cuci Sepatu")
-                putExtra(OrderActivity.EXTRA_PRICE_PER_KG, 25000)
-                putExtra(OrderActivity.EXTRA_ESTIMATE_DAYS, "2 hari kerja")
-            }
-            startActivity(intent)
-        }
-
-        // Tombol Buat Pesanan Baru (default extra_layanan "Kiloan")
         binding.btnBuatPesanan.setOnClickListener {
-            val intent = Intent(requireContext(), OrderActivity::class.java).apply {
+            startActivity(Intent(requireContext(), OrderActivity::class.java).apply {
                 putExtra("extra_layanan", "Kiloan")
-            }
-            startActivity(intent)
+            })
         }
 
-        // Tombol Tips Merawat Pakaian
         binding.btnTipsPakaian.setOnClickListener {
-            val intent = Intent(requireContext(), WebViewActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
     }
 

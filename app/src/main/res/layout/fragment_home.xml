@@ -1,268 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/kilau_background"
+    android:orientation="vertical"
     tools:context=".home.HomeFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/bg_splash_gradient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="@string/title_beranda"
-        app:titleTextColor="@color/kilau_white"
-        app:subtitleTextColor="#D1E2FF" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_home_header"
+        android:orientation="vertical"
+        android:paddingBottom="18dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:subtitleTextColor="#D1E2FF"
+            app:title="@string/title_beranda"
+            app:titleTextColor="@color/kilau_white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="Laundry bersih, hari lebih ringan."
+            android:textColor="@color/kilau_white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        android:layout_weight="1"
+        android:background="@drawable/bg_home_sheet"
+        android:clipToPadding="false"
+        android:fillViewport="true">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="24dp">
 
-            <!-- Judul Layanan Utama -->
             <TextView
                 android:id="@+id/tv_title_layanan"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
                 android:fontFamily="@font/popping_cute"
                 android:text="@string/title_layanan_utama"
                 android:textColor="@color/kilau_navy"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Kartu Layanan (4 Layanan) -->
-            <RelativeLayout
-                android:id="@+id/card_layanan"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_layanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_title_layanan"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_card_white"
-                android:padding="16dp">
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                tools:listitem="@layout/item_layanan" />
 
-                <View
-                    android:id="@+id/center_horizontal_guideline"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerHorizontal="true" />
-
-                <!-- Item 1: Kiloan -->
-                <RelativeLayout
-                    android:id="@+id/item_kiloan"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toStartOf="@id/center_horizontal_guideline"
-                    android:background="@drawable/bg_service_item"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/img_kiloan"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="Layanan Kiloan"
-                        android:src="@drawable/ic_home" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/img_kiloan"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="Kiloan"
-                        android:textColor="@color/kilau_navy"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <!-- Item 2: Satuan -->
-                <RelativeLayout
-                    android:id="@+id/item_satuan"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toEndOf="@id/center_horizontal_guideline"
-                    android:background="@drawable/bg_service_item"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/img_satuan"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="Layanan Satuan"
-                        android:src="@drawable/ic_home" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/img_satuan"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="Satuan"
-                        android:textColor="@color/kilau_navy"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <!-- Item 3: Express -->
-                <RelativeLayout
-                    android:id="@+id/item_express"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@id/item_kiloan"
-                    android:layout_marginEnd="6dp"
-                    android:layout_toStartOf="@id/center_horizontal_guideline"
-                    android:background="@drawable/bg_service_item"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/img_express"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="Layanan Express"
-                        android:src="@drawable/ic_add" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/img_express"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="Express"
-                        android:textColor="@color/kilau_navy"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <!-- Item 4: Sepatu -->
-                <RelativeLayout
-                    android:id="@+id/item_sepatu"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@id/item_satuan"
-                    android:layout_marginStart="6dp"
-                    android:layout_toEndOf="@id/center_horizontal_guideline"
-                    android:background="@drawable/bg_service_item"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/img_sepatu"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="Layanan Sepatu"
-                        android:src="@drawable/ic_history" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/img_sepatu"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="Sepatu"
-                        android:textColor="@color/kilau_navy"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-            <!-- Banner Promo -->
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/banner_promo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/card_layanan"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_banner_yellow"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="14dp">
 
-                <ImageView
-                    android:id="@+id/img_promo_icon"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="Promo"
-                    android:src="@drawable/ic_add" />
-
                 <TextView
-                    android:id="@+id/tv_promo_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@id/img_promo_icon"
-                    android:text="Promo 20% - Pesanan pertama, kode KILAU20"
-                    android:textColor="@color/kilau_navy"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:text="🎉"
+                    android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/tv_promo_subtitle"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_promo_title"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_toEndOf="@id/img_promo_icon"
-                    android:text="Gunakan kode promo saat checkout!"
-                    android:textColor="@color/kilau_muted"
-                    android:textSize="12sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_promo_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Promo 20% untuk pesanan pertama"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-            <!-- Judul Pesanan Aktif -->
+                    <TextView
+                        android:id="@+id/tv_promo_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Gunakan kode KILAU20 saat checkout."
+                        android:textColor="@color/kilau_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/tv_title_pesanan"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/banner_promo"
-                android:layout_alignParentStart="true"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/popping_cute"
                 android:text="@string/title_pesanan_aktif"
@@ -270,101 +125,85 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Kartu Pesanan Aktif -->
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/card_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_title_pesanan"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_card_white"
+                android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tv_order_id"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:text="No. Pesanan: #KL-8821"
-                    android:textColor="@color/kilau_navy"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_order_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/bg_service_item"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="4dp"
-                    android:text="Proses Cuci"
-                    android:textColor="@color/kilau_primary"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tv_order_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Belum Ada Pesanan"
+                        android:textColor="@color/kilau_navy"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_service_item"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="Kosong"
+                        android:textColor="@color/kilau_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_order_service"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_order_id"
-                    android:layout_alignParentStart="true"
                     android:layout_marginTop="8dp"
-                    android:text="Layanan: Kiloan Regular (5 kg)"
+                    android:text="Belum ada pesanan aktif"
                     android:textColor="@color/kilau_muted"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tv_order_date"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_order_service"
-                    android:layout_alignParentStart="true"
                     android:layout_marginTop="4dp"
-                    android:text="Estimasi Selesai: Hari Ini, 17:00 WIB"
+                    android:text="Silakan buat pesanan baru"
                     android:textColor="@color/kilau_navy"
                     android:textSize="13sp"
                     android:textStyle="bold" />
+            </LinearLayout>
 
-            </RelativeLayout>
-
-            <!-- Tombol Buat Pesanan Baru -->
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_buat_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_below="@id/card_pesanan"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/kilau_primary"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_button_primary"
                 android:text="@string/btn_buat_pesanan_baru"
                 android:textColor="@color/kilau_white"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                app:cornerRadius="12dp"
-                app:icon="@drawable/ic_add"
-                app:iconGravity="textStart"
-                app:iconPadding="8dp"
-                app:iconTint="@color/kilau_white" />
+                android:textStyle="bold" />
 
-            <!-- Tombol Tips Merawat Pakaian -->
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_tips_pakaian"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_below="@id/btn_buat_pesanan"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="@color/kilau_yellow"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_button_yellow"
                 android:text="@string/btn_tips_pakaian"
                 android:textColor="@color/kilau_navy"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                app:cornerRadius="12dp" />
-
-        </RelativeLayout>
-
+                android:textStyle="bold" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
