@@ -36,7 +36,7 @@
 
     <string name="default_service_name">Cuci + Setrika</string>
     <string name="default_service_detail">Rp7.000 / kg · 2&#8211;3 hari kerja</string>
-    <string name="service_detail_format">%1$s / kg · %2$s</string>
+    <string name="service_detail_format">%1$s / %2$s · %3$s</string>
     <string name="weight_title">Berat Cucian</string>
     <string name="weight_subtext">Ditagih sesuai berat aktual</string>
     <string name="default_weight_value">3 kg</string>

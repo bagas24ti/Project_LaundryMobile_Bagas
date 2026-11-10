@@ -25,6 +25,8 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.json.JSONArray
+import org.json.JSONObject
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -87,9 +89,9 @@ class OrderActivity : AppCompatActivity() {
         }
 
         pricePerKg = when (serviceName) {
-            "Cuci Satuan" -> 15000
-            "Cuci Express" -> 12000
-            "Cuci Sepatu" -> 25000
+            "Cuci Satuan" -> intent.getIntExtra(EXTRA_PRICE_PER_KG, 25000)
+            "Cuci Express" -> intent.getIntExtra(EXTRA_PRICE_PER_KG, 12000)
+            "Cuci Sepatu" -> intent.getIntExtra(EXTRA_PRICE_PER_KG, 30000)
             else -> intent.getIntExtra(EXTRA_PRICE_PER_KG, 7000)
         }
 
@@ -111,7 +113,27 @@ class OrderActivity : AppCompatActivity() {
 
         // 2. Setup Service Info
         binding.tvServiceName.text = serviceName
-        binding.tvServiceDetail.text = getString(R.string.service_detail_format, formatRupiah(pricePerKg), estimateDays)
+        binding.tvServiceDetail.text = getString(
+            R.string.service_detail_format,
+            formatRupiah(pricePerKg),
+            quantityUnit(),
+            estimateDays
+        )
+        binding.lblEstimasiBerat.text = when (serviceName) {
+            "Cuci Satuan" -> "JUMLAH ITEM"
+            "Cuci Sepatu" -> "JUMLAH PASANG"
+            else -> getString(R.string.label_estimasi_berat)
+        }
+        binding.tvWeightTitle.text = when (serviceName) {
+            "Cuci Satuan" -> "Jumlah pakaian"
+            "Cuci Sepatu" -> "Jumlah sepatu"
+            else -> getString(R.string.weight_title)
+        }
+        binding.tvWeightSubtext.text = when (serviceName) {
+            "Cuci Satuan" -> "Ditagih sesuai jumlah item"
+            "Cuci Sepatu" -> "Ditagih sesuai jumlah pasang"
+            else -> getString(R.string.weight_subtext)
+        }
 
         // 3. Setup Address Card Click
         binding.cardAlamat.setOnClickListener {
@@ -202,7 +224,7 @@ class OrderActivity : AppCompatActivity() {
     }
 
     private fun updateWeightUI() {
-        binding.tvWeightValue.text = getString(R.string.weight_format, weight)
+        binding.tvWeightValue.text = "$weight ${quantityUnit()}"
 
         binding.btnMinus.isEnabled = weight > MIN_WEIGHT
         binding.btnMinus.alpha = if (weight > MIN_WEIGHT) 1.0f else 0.4f
@@ -212,6 +234,12 @@ class OrderActivity : AppCompatActivity() {
 
         val total = weight * pricePerKg
         binding.tvTotalPrice.text = formatRupiah(total)
+    }
+
+    private fun quantityUnit(): String = when (serviceName) {
+        "Cuci Satuan" -> "item"
+        "Cuci Sepatu" -> "pasang"
+        else -> "kg"
     }
 
     private fun handleOrderSubmit() {
@@ -260,8 +288,30 @@ class OrderActivity : AppCompatActivity() {
             putString("last_order_status", "Menunggu dijemput")
             apply()
         }
+        saveOrderToHistory(orderNumber, orderSchedule)
 
         sendOrderNotifications(orderNumber, orderSchedule)
+    }
+
+    // Simpan setiap pesanan sebagai JSON agar dapat ditampilkan kembali di Riwayat.
+    private fun saveOrderToHistory(orderNumber: String, orderSchedule: String) {
+        val orderPrefs = getSharedPreferences("order_pref", MODE_PRIVATE)
+        val orders = try {
+            JSONArray(orderPrefs.getString("order_list", "[]"))
+        } catch (exception: org.json.JSONException) {
+            throw IllegalStateException("Data riwayat pesanan tidak valid", exception)
+        }
+        val total = weight * pricePerKg
+        val order = JSONObject().apply {
+            put("id", orderNumber)
+            put("layanan", serviceName)
+            put("jumlah", "${weight} ${quantityUnit()}")
+            put("jadwal", orderSchedule)
+            put("total", formatRupiah(total))
+            put("status", "Menunggu dijemput")
+        }
+        orders.put(order)
+        orderPrefs.edit().putString("order_list", orders.toString()).apply()
     }
 
     private fun sendOrderNotifications(orderNumber: String, orderSchedule: String) {
