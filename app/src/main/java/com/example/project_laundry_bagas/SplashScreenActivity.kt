@@ -35,7 +35,13 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000) // simulasi pengambilan data 2 detik
             val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
             val isLogin = sharedPref.getBoolean("isLogin", false)
-            val target = if (isLogin) BaseActivity::class.java else AuthActivity::class.java
+            val onboardDone = getSharedPreferences("app_pref", MODE_PRIVATE)
+                .getBoolean("onboard_done", false)
+            val target = when {
+                isLogin -> BaseActivity::class.java
+                !onboardDone -> com.example.project_laundry_bagas.onboarding.OnboardingActivity::class.java
+                else -> AuthActivity::class.java
+            }
             startActivity(Intent(this@SplashScreenActivity, target))
             finish()
         }

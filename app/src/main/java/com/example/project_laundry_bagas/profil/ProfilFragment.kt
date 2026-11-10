@@ -19,6 +19,7 @@ import com.example.project_laundry_bagas.AuthActivity
 import com.example.project_laundry_bagas.R
 import com.example.project_laundry_bagas.databinding.FragmentProfilBinding
 import com.example.project_laundry_bagas.home.WebViewActivity
+import com.example.project_laundry_bagas.onboarding.OnboardingActivity
 
 class ProfilFragment : Fragment() {
 
@@ -96,7 +97,9 @@ class ProfilFragment : Fragment() {
             startActivity(intent)
         }
         binding.btnMenuBantuan.setOnClickListener {
-            Toast.makeText(requireContext(), getString(R.string.menu_bantuan), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), OnboardingActivity::class.java).apply {
+                putExtra(OnboardingActivity.EXTRA_FROM_PROFILE, true)
+            })
         }
 
         // Logout
