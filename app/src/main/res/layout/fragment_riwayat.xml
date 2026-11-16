@@ -18,29 +18,27 @@
         app:title="Riwayat Pesanan"
         app:titleTextColor="@color/kilau_white" />
 
-    <ListView
-        android:id="@+id/lv_riwayat"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:padding="12dp"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:background="@color/kilau_white"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/kilau_primary"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/kilau_primary"
+        app:tabTextColor="@color/kilau_muted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <TextView
-        android:id="@+id/tv_kosong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Belum ada pesanan"
-        android:textColor="@color/kilau_muted"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/lv_riwayat"
-        app:layout_constraintEnd_toEndOf="@id/lv_riwayat"
-        app:layout_constraintStart_toStartOf="@id/lv_riwayat"
-        app:layout_constraintTop_toTopOf="@id/lv_riwayat" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
