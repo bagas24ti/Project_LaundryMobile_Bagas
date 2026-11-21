@@ -45,11 +45,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:letterSpacing="0.05"
                 android:text="@string/label_layanan"
                 android:textColor="@color/kilau_muted"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textSize="11sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_layanan"
@@ -83,6 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@id/img_service_check"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="@string/default_service_name"
                         android:textColor="@color/kilau_navy"
                         android:textSize="15sp"
@@ -96,6 +97,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="4dp"
                         android:layout_toStartOf="@id/img_service_check"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:text="@string/default_service_detail"
                         android:textColor="@color/kilau_muted"
                         android:textSize="13sp" />
@@ -112,11 +114,11 @@
                 android:layout_below="@id/card_layanan"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="18dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:letterSpacing="0.05"
                 android:text="@string/label_estimasi_berat"
                 android:textColor="@color/kilau_muted"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textSize="11sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_berat"
@@ -152,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@id/btn_plus"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:gravity="center"
                         android:text="@string/default_weight_value"
                         android:textColor="@color/kilau_navy"
@@ -174,6 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@id/btn_minus"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="@string/weight_title"
                         android:textColor="@color/kilau_navy"
                         android:textSize="15sp"
@@ -187,6 +191,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="4dp"
                         android:layout_toStartOf="@id/btn_minus"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:text="@string/weight_subtext"
                         android:textColor="@color/kilau_muted"
                         android:textSize="12sp" />
@@ -203,11 +208,11 @@
                 android:layout_below="@id/card_berat"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="18dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:letterSpacing="0.05"
                 android:text="@string/label_alamat_jemput"
                 android:textColor="@color/kilau_muted"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textSize="11sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_alamat"
@@ -251,6 +256,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@id/img_location_bg"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="@string/address_title"
                         android:textColor="@color/kilau_navy"
                         android:textSize="15sp"
@@ -265,6 +271,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_toEndOf="@id/img_location_bg"
                         android:ellipsize="end"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:maxLines="1"
                         android:text="@string/address_detail"
                         android:textColor="@color/kilau_muted"
@@ -282,11 +289,11 @@
                 android:layout_below="@id/card_alamat"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="18dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:letterSpacing="0.05"
                 android:text="@string/label_jadwal_penjemputan"
                 android:textColor="@color/kilau_muted"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textSize="11sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_jadwal"
@@ -311,6 +318,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
+                        android:fontFamily="@font/plus_jakarta_sans_semibold"
                         android:text="Tanggal Jemput:"
                         android:textColor="@color/kilau_navy"
                         android:textSize="14sp"
@@ -326,6 +334,7 @@
                         android:background="@drawable/bg_input_field"
                         android:clickable="true"
                         android:focusable="false"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:hint="Pilih tanggal jemput"
                         android:inputType="none"
                         android:paddingHorizontal="14dp"
@@ -339,6 +348,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/etTanggal"
                         android:layout_marginTop="12dp"
+                        android:fontFamily="@font/plus_jakarta_sans_semibold"
                         android:text="Jam Jemput:"
                         android:textColor="@color/kilau_navy"
                         android:textSize="14sp"
@@ -354,6 +364,7 @@
                         android:background="@drawable/bg_input_field"
                         android:clickable="true"
                         android:focusable="false"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:hint="Pilih jam jemput"
                         android:inputType="none"
                         android:paddingHorizontal="14dp"
@@ -373,11 +384,11 @@
                 android:layout_below="@id/card_jadwal"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="18dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:letterSpacing="0.05"
                 android:text="@string/label_catatan"
                 android:textColor="@color/kilau_muted"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textSize="11sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_catatan"
@@ -402,6 +413,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:gravity="top"
                         android:hint="@string/notes_hint"
                         android:inputType="textMultiLine"
@@ -435,6 +447,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:backgroundTint="@color/kilau_primary"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:paddingHorizontal="24dp"
             android:text="@string/btn_pesan_sekarang"
             android:textColor="@color/kilau_white"
@@ -448,6 +461,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/btn_order"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
             android:text="@string/total_estimate_label"
             android:textColor="@color/kilau_muted"
             android:textSize="12sp" />
@@ -460,6 +474,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="2dp"
             android:layout_toStartOf="@id/btn_order"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:text="Rp21.000"
             android:textColor="@color/kilau_navy"
             android:textSize="20sp"

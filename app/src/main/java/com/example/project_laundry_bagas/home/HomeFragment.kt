@@ -66,10 +66,10 @@ class HomeFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         val layanan = listOf(
-            LayananModel("kiloan", "Kiloan", "Cuci pakaian harian", "Rp7.000/kg", "👕"),
-            LayananModel("satuan", "Satuan", "Cuci pakaian khusus", "Rp25.000/item", "🧥"),
-            LayananModel("express", "Express", "Selesai lebih cepat", "Rp12.000/kg", "⚡"),
-            LayananModel("sepatu", "Sepatu", "Perawatan sepatu", "Rp30.000/pasang", "👟")
+            LayananModel("kiloan", "Kiloan", "Cuci pakaian harian", "Rp7.000/kg", R.drawable.ic_baju_cowok),
+            LayananModel("satuan", "Satuan", "Cuci pakaian khusus", "Rp25.000/item", R.drawable.ic_baju_cewek),
+            LayananModel("express", "Express", "Selesai lebih cepat", "Rp12.000/kg", R.drawable.ic_kilat),
+            LayananModel("sepatu", "Sepatu", "Perawatan sepatu", "Rp30.000/pasang", R.drawable.ic_sepatu)
         )
         binding.rvLayanan.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvLayanan.isNestedScrollingEnabled = false

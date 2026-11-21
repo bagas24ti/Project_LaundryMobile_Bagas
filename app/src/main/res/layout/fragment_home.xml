@@ -28,6 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:paddingHorizontal="20dp"
             android:text="Laundry bersih, hari lebih ringan."
             android:textColor="@color/kilau_white"
@@ -56,7 +57,7 @@
                 android:id="@+id/tv_title_layanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/popping_cute"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="@string/title_layanan_utama"
                 android:textColor="@color/kilau_navy"
                 android:textSize="18sp"
@@ -98,6 +99,7 @@
                         android:id="@+id/tv_promo_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="Promo 20% untuk pesanan pertama"
                         android:textColor="@color/kilau_navy"
                         android:textSize="14sp"
@@ -108,6 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
+                        android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:text="Gunakan kode KILAU20 saat checkout."
                         android:textColor="@color/kilau_muted"
                         android:textSize="12sp" />
@@ -119,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/popping_cute"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="@string/title_pesanan_aktif"
                 android:textColor="@color/kilau_navy"
                 android:textSize="18sp"
@@ -145,6 +148,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="Belum Ada Pesanan"
                         android:textColor="@color/kilau_navy"
                         android:textSize="15sp"
@@ -155,12 +159,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_service_item"
+                        android:fontFamily="@font/plus_jakarta_sans_medium"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:text="Kosong"
                         android:textColor="@color/kilau_primary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <TextView
@@ -168,6 +172,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/plus_jakarta_sans_regular"
                     android:text="Belum ada pesanan aktif"
                     android:textColor="@color/kilau_muted"
                     android:textSize="13sp" />
@@ -177,6 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:text="Silakan buat pesanan baru"
                     android:textColor="@color/kilau_navy"
                     android:textSize="13sp"
@@ -189,6 +195,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/bg_button_primary"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="@string/btn_buat_pesanan_baru"
                 android:textColor="@color/kilau_white"
                 android:textSize="15sp"
@@ -200,6 +207,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_button_yellow"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="@string/btn_tips_pakaian"
                 android:textColor="@color/kilau_navy"
                 android:textSize="15sp"

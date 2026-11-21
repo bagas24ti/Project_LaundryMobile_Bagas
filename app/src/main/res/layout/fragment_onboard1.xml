@@ -7,30 +7,32 @@
     android:orientation="vertical"
     android:padding="32dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Keranjang laundry"
-        android:text="🧺"
-        android:textSize="104sp" />
+    <ImageView
+        android:layout_width="85dp"
+        android:layout_height="92dp"
+        android:layout_gravity="center"
+        android:contentDescription="keranjang cucian"
+        android:src="@drawable/ic_keranjang" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:gravity="center"
         android:text="Pesan Laundry Tanpa Ribet"
         android:textColor="@color/kilau_navy"
-        android:textSize="25sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
         android:text="Pilih layanan, isi alamat, dan tentukan jadwal jemput dari ponselmu."
         android:textColor="@color/kilau_muted"
-        android:textSize="16sp" />
+        android:textSize="15sp" />
 </LinearLayout>

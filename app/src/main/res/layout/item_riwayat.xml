@@ -27,6 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="#KL-0921"
                 android:textColor="@color/kilau_navy"
                 android:textSize="15sp"
@@ -37,12 +38,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_status_diproses"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
                 android:text="Diproses"
                 android:textColor="@color/kilau_primary"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <TextView
@@ -50,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:text="Cuci Kiloan · 3 kg"
             android:textColor="@color/kilau_navy"
             android:textSize="14sp"
@@ -60,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
             android:text="21 Sep 2026, 10:00"
             android:textColor="@color/kilau_muted"
             android:textSize="13sp" />
@@ -69,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:text="Rp21.000"
             android:textColor="@color/kilau_primary"
             android:textSize="14sp"

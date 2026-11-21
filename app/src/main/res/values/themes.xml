@@ -1,9 +1,49 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Project_Laundry_Bagas" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Global Font Family -->
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/kilau_primary</item>
+        <item name="colorOnPrimary">@color/kilau_white</item>
+        <item name="colorSecondary">@color/kilau_primary_light</item>
+        <item name="colorOnSecondary">@color/kilau_white</item>
+
+        <!-- Material TextAppearances -->
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Kilau.Heading1</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Kilau.Heading2</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Kilau.Price</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Kilau.Body</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Kilau.BodyMedium</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Kilau.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Kilau.Caption</item>
+
+        <!-- Component Default Styles -->
+        <item name="toolbarStyle">@style/Widget.Kilau.Toolbar</item>
+        <item name="bottomNavigationStyle">@style/Widget.Kilau.BottomNavigation</item>
+        <item name="materialAlertDialogTheme">@style/Theme.Kilau.MaterialAlertDialog</item>
+        <item name="alertDialogTheme">@style/Theme.Kilau.MaterialAlertDialog</item>
     </style>
 
     <style name="Theme.Project_Laundry_Bagas" parent="Base.Theme.Project_Laundry_Bagas" />
+
+    <!-- Custom Component Styles -->
+    <style name="Widget.Kilau.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextAppearance">@style/Widget.Kilau.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/Widget.Kilau.Toolbar.Subtitle</item>
+    </style>
+
+    <style name="Widget.Kilau.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/Widget.Kilau.BottomNav.Active</item>
+        <item name="itemTextAppearanceInactive">@style/Widget.Kilau.BottomNav.Inactive</item>
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+    </style>
+
+    <style name="Theme.Kilau.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">@style/TextAppearance.Kilau.Heading2</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/TextAppearance.Kilau.Body</item>
+    </style>
 </resources>

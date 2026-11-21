@@ -12,19 +12,20 @@
     android:orientation="vertical"
     android:padding="12dp">
 
-    <TextView
-        android:id="@+id/tv_emoji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Ilustrasi layanan"
-        android:text="👕"
-        android:textSize="34sp" />
+    <ImageView
+        android:id="@+id/iv_emoji"
+        android:layout_width="85dp"
+        android:layout_height="92dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/brand_name"
+        android:src="@drawable/ic_baju_cowok" />
 
     <TextView
         android:id="@+id/tv_nama_layanan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:gravity="center"
         android:maxLines="1"
         android:text="Kiloan"
@@ -36,6 +37,7 @@
         android:id="@+id/tv_deskripsi_layanan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
         android:gravity="center"
         android:maxLines="1"
         android:text="Cuci pakaian harian"
@@ -46,6 +48,7 @@
         android:id="@+id/tv_harga_layanan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:gravity="center"
         android:maxLines="1"
         android:text="Rp7.000/kg"

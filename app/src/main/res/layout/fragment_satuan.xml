@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/popping_cute"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="Layanan Satuan"
                 android:textColor="@color/kilau_navy"
                 android:textSize="18sp"
@@ -36,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
                 android:text="• Jaket / Blazer Rp25.000"
                 android:textColor="@color/kilau_navy"
                 android:textSize="14sp" />
@@ -44,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
                 android:text="• Jas Lengkap Rp35.000"
                 android:textColor="@color/kilau_navy"
                 android:textSize="14sp" />
@@ -52,6 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
                 android:text="• Gaun / Pesta Rp30.000"
                 android:textColor="@color/kilau_navy"
                 android:textSize="14sp" />

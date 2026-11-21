@@ -5,5 +5,5 @@ data class LayananModel(
     val nama: String,
     val deskripsi: String,
     val harga: String,
-    val emoji: String
+    val icon: Int
 )

@@ -14,7 +14,7 @@ class LayananAdapter(
         private val binding: ItemLayananBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: LayananModel) {
-            binding.tvEmoji.text = item.emoji
+            binding.ivEmoji.setImageResource(item.icon)
             binding.tvNamaLayanan.text = item.nama
             binding.tvDeskripsiLayanan.text = item.deskripsi
             binding.tvHargaLayanan.text = item.harga

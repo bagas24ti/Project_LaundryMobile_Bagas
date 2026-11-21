@@ -28,6 +28,7 @@
         app:tabIndicatorFullWidth="false"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/kilau_primary"
+        app:tabTextAppearance="@style/Widget.Kilau.TabLayout"
         app:tabTextColor="@color/kilau_muted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

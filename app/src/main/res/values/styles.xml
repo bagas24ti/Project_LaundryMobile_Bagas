@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Typography Styles (TextAppearance.Kilau.*) -->
+    <style name="TextAppearance.Kilau.Heading1" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/kilau_navy</item>
+    </style>
+
+    <style name="TextAppearance.Kilau.Heading2" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/kilau_navy</item>
+    </style>
+    <style name="TextAppearance.Kilau.mirador" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/mirador_bold</item>
+        <item name="android:fontFamily">@font/mirador_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/kilau_background</item>
+    </style>
+
+    <style name="TextAppearance.Kilau.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/kilau_navy</item>
+    </style>
+
+    <style name="TextAppearance.Kilau.BodyMedium" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/kilau_navy</item>
+    </style>
+
+    <style name="TextAppearance.Kilau.Caption" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/kilau_muted</item>
+    </style>
+
+    <style name="TextAppearance.Kilau.Button" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.Kilau.Price" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/kilau_navy</item>
+    </style>
+
+    <!-- Toolbar Title & Subtitle Appearances -->
+    <style name="Widget.Kilau.Toolbar.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/kilau_white</item>
+    </style>
+
+    <style name="Widget.Kilau.Toolbar.Subtitle" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#D1E2FF</item>
+    </style>
+
+    <!-- BottomNavigationView TextAppearances -->
+    <style name="Widget.Kilau.BottomNav.Active" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.Kilau.BottomNav.Inactive" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- TabLayout TextAppearance -->
+    <style name="Widget.Kilau.TabLayout" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+</resources>
